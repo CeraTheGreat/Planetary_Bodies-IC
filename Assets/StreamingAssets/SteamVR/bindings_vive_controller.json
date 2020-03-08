@@ -73,7 +73,7 @@
             {
                "inputs" : {
                   "north" : {
-                     "output" : "/actions/default/in/grab"
+                     "output" : "/actions/default/in/point"
                   }
                },
                "mode" : "dpad",

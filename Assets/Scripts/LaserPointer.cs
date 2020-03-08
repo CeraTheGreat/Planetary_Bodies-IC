@@ -10,6 +10,7 @@ public class LaserPointer : MonoBehaviour
     public SteamVR_Behaviour_Pose controllerPose;
     public GameObject laserPrefab;
     public SteamVR_Action_Boolean pointAction;
+    public Text t;
 
     private GameObject laser;
     private Transform laserTransform;
@@ -21,6 +22,7 @@ public class LaserPointer : MonoBehaviour
     {
         laser = Instantiate(laserPrefab);
         laserTransform = laser.transform;
+        t.enabled = false;
     }
 
     // Update is called once per frame
@@ -30,14 +32,15 @@ public class LaserPointer : MonoBehaviour
         {
             print("Point!");
             RaycastHit hit;
-            if(Physics.Raycast(controllerPose.transform.position, transform.forward, out hit, 100f))
+            if(Physics.Raycast(controllerPose.transform.position, transform.forward, out hit, 1000f))
             {
                 hitpoint = hit.point;
                 showLaser(hit);
                 if(hit.collider != null)
                 {
                     print("hit!");
-                    ObjectInfo(hit);
+                    //ObjectInfo(hit);
+                    t.enabled = true;
                 }
             }
             else

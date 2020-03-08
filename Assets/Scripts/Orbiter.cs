@@ -37,8 +37,8 @@ public class Orbiter : MonoBehaviour
     {
         speedup = parentBody.GetComponent<PlanetSpeedup>().getSpeedup();
 
-        deltaRotationalAngle = (360f / rotationalPeriod) * speedup;
-        deltaOrbitalAngle = (360f / orbialPeriod) * speedup;
+        deltaRotationalAngle = -(360f / rotationalPeriod) * speedup;
+        deltaOrbitalAngle = -(360f / orbialPeriod) * speedup;
         
         satelite.transform.RotateAround(parentBody.transform.position, orbitAxis, Time.deltaTime * deltaOrbitalAngle);
         satelite.transform.Rotate(0f, Time.deltaTime * deltaRotationalAngle, 0f);

@@ -6,9 +6,10 @@ using Valve.VR;
 public class PlanetSpeedup : MonoBehaviour
 {
     public SteamVR_Input_Sources handType;
-    //public SteamVR_Input_Sources handType2;
     public SteamVR_Action_Boolean speedupAction;
     private float speedMultiplyer;
+
+    public AudioSource music;
 
     // Start is called before the first frame update
     void Start()
@@ -19,14 +20,16 @@ public class PlanetSpeedup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (speedupAction.GetState(handType) /*|| speedupAction.GetState(handType2)*/)
+        if (speedupAction.GetState(handType))
         {
             print("Speed!");
             speedMultiplyer = 3;
+            music.pitch = 3;
         }
         else
         {
             speedMultiplyer = 1;
+            music.pitch = 1;
         }
     }
 
