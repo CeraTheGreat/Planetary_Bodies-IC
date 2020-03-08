@@ -29,7 +29,7 @@ public class Orbiter : MonoBehaviour
         orbitAxis = new Vector3(0f, 1f, 0f);
         
         float distanceToParent = Vector3.Distance(satelite.transform.position, parentBody.transform.position);
-        ringInstance.transform.localScale = new Vector3(distanceToParent * 2f, ringThickness, distanceToParent * 2f);
+        ringInstance.transform.localScale = new Vector3(distanceToParent *2f , ringThickness, distanceToParent *2f);
     }
 
     // Update is called once per frame
