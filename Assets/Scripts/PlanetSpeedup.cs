@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿/* This scrip takes input from the controller and when that input is given it changes the speed variable from 1 to 3.
+ * This was attached to the sun so that all the planets could access the speed multiplier easily.
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
@@ -22,7 +25,7 @@ public class PlanetSpeedup : MonoBehaviour
     {
         if (speedupAction.GetState(handType))
         {
-            print("Speed!");
+            //print("Speed!");      //for debugging purposes
             speedMultiplyer = 3;
             music.pitch = 3;
         }
@@ -33,6 +36,7 @@ public class PlanetSpeedup : MonoBehaviour
         }
     }
 
+    //This method allows the planets, or any object, to gain access to the speed multiplyer varible
     public float getSpeedup()
     {
         return speedMultiplyer;

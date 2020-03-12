@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿/* This is a script that creates a laser that points from the end of the controller to any object that it hits. With it we could
+ * but did not implement a information gathering on a planet if it touched one. 
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
@@ -10,7 +13,7 @@ public class LaserPointer : MonoBehaviour
     public SteamVR_Behaviour_Pose controllerPose;
     public GameObject laserPrefab;
     public SteamVR_Action_Boolean pointAction;
-    public Text t;
+    //public Text t;
 
     private GameObject laser;
     private Transform laserTransform;
@@ -22,7 +25,7 @@ public class LaserPointer : MonoBehaviour
     {
         laser = Instantiate(laserPrefab);
         laserTransform = laser.transform;
-        t.enabled = false;
+        //t.enabled = false;
     }
 
     // Update is called once per frame
@@ -30,17 +33,19 @@ public class LaserPointer : MonoBehaviour
     {
         if (pointAction.GetState(handType))
         {
-            print("Point!");
+            //print("Point!");  //for debugging purposes
             RaycastHit hit;
+
+            //this if statement checks if the RaycastHit hit touches any object
             if(Physics.Raycast(controllerPose.transform.position, transform.forward, out hit, 1000f))
             {
                 hitpoint = hit.point;
                 showLaser(hit);
                 if(hit.collider != null)
                 {
-                    print("hit!");
+                    //print("hit!"); //for debugging purposes
                     //ObjectInfo(hit);
-                    t.enabled = true;
+                    //t.enabled = true;
                 }
             }
             else
@@ -55,6 +60,7 @@ public class LaserPointer : MonoBehaviour
         }
     }
 
+    //This method takes in a RaycastHit object and resizes the laser prefab to touch the object that the RaycastHit object touched as well
     private void showLaser(RaycastHit hit)
     {
         laser.SetActive(true);
@@ -63,6 +69,7 @@ public class LaserPointer : MonoBehaviour
         laserTransform.localScale = new Vector3(laserTransform.localScale.x, laserTransform.localScale.y, hit.distance);
     }
 
+    //This method would have been implemented to get any object info that the RaycastHit touched
     private void ObjectInfo(RaycastHit hit)
     {
         pointingObject = hit.collider.gameObject;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// We ended up not using this script and scratching the Idea.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
